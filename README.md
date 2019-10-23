@@ -57,3 +57,15 @@ from package.subpackageA import moduleB as mB
 These should intuitively be doing the same thing,
 that is importing `package` and then aliasing `package.subpackageA.moduleB` to `mB` in the namespace.
 Clearly, in this case, something quite different is happening, so there must be some underlying difference between `import` statements and `from-import` statements.
+
+It is also worth noting that the flatter structure of `package3` means that the standard `import` approach (as opposed to `from-import`) works fine:
+
+```sh
+python3 -m package3
+```
+
+yielding
+
+```
+/usr/bin/python3: No module named package3.__main__; 'package3' is a package and cannot be directly executed
+```
