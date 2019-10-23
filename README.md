@@ -41,3 +41,19 @@ yielding:
 ```
 /usr/bin/python3: No module named package2.__main__; 'package2' is a package and cannot be directly executed
 ```
+
+The only difference is that imports of the form
+
+```python3
+import package.subpackageA.moduleB as mB
+```
+
+were changed to
+
+```python3
+from package.subpackageA import moduleB as mB
+```
+
+These should intuitively be doing the same thing,
+that is importing `package` and then aliasing `package.subpackageA.moduleB` to `mB` in the namespace.
+Clearly, in this case, something quite different is happening, so there must be some underlying difference between `import` statements and `from-import` statements.
